@@ -4,7 +4,7 @@ import com.example.entity.User;
 import java.util.List;
 
 public interface UsersDao {
-    void saveUser(User user);
+    int saveUser(User user);
     User getUserById(int id);
     User getUserByUsername(String username);
     List<User> getAllUsers();

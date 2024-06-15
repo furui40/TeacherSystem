@@ -12,16 +12,27 @@ import java.util.List;
 public class UsersDaoImpl implements UsersDao {
 
     @Override
-    public void saveUser(User user) {
+    public int saveUser(User user) {
         String sql = "INSERT INTO Users (Username, Password, UserType) VALUES (?, ?, ?)";
+        int userID = -1; // 初始化为-1，表示插入失败
+
         try {
-            DBUtil.executeUpdate(sql, user.getUsername(), user.getPassword(), user.getUserType().name());
+            // 执行插入操作，并获取生成的主键
+            userID = DBUtil.executeUpdateAndGetGeneratedKey(sql, user.getUsername(), user.getPassword(), user.getUserType().name());
+
+            if (userID == -1) {
+                throw new SQLException("Creating user failed, no ID obtained.");
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBUtil.close();
         }
+
+        return userID; // 返回插入的UserID，如果插入失败则返回-1
     }
+
+
+
 
     @Override
     public User getUserById(int id) {

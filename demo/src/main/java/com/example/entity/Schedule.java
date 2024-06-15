@@ -11,8 +11,7 @@ public class Schedule {
     public Schedule() {
     }
 
-    public Schedule(int scheduleID, int teacherID, Date date, String timeSlot) {
-        this.scheduleID = scheduleID;
+    public Schedule(int teacherID, Date date, String timeSlot) {
         this.teacherID = teacherID;
         this.date = date;
         this.timeSlot = timeSlot;

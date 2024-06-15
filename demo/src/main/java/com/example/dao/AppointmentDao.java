@@ -1,14 +1,15 @@
 package com.example.dao;
 
 import com.example.entity.Appointment;
+
 import java.util.List;
 
 public interface AppointmentDao {
     void saveAppointment(Appointment appointment);
-    Appointment getAppointmentById(int id);
-    List<Appointment> getAppointmentByStudentId(int studentId);
-    List<Appointment> getAppointmentByTeacherId(int teacherId);
+    Appointment getAppointmentById(int appointmentID);
+    List<Appointment> getAppointmentsByStudentId(int studentID);
+    List<Appointment> getAppointmentsByTeacherId(int teacherID);
     List<Appointment> getAllAppointments();
     void updateAppointment(Appointment appointment);
-    void deleteAppointment(int id);
+    void deleteAppointment(int appointmentID);
 }
