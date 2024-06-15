@@ -1,8 +1,13 @@
 package com.example.myservlet;
 
 import com.example.dao.TeachersDao;
+import com.example.dao.impl.ResearchDaoImpl;
 import com.example.dao.impl.TeachersDaoImpl;
+import com.example.dao.impl.UsersDaoImpl;
+import com.example.entity.Research;
 import com.example.entity.Teacher;
+import com.example.entity.User;
+import com.example.entity.UserType;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/TeacherServlet")
 public class TeacherServlet extends HttpServlet {
@@ -23,60 +29,91 @@ public class TeacherServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        Integer userId = null; // 在循环外部声明 userId
-
-        // 获取cookie中的userId
-        Cookie[] cookies = request.getCookies();
-
-        // 遍历所有的Cookie
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("id")) {
-                    userId = Integer.valueOf(cookie.getValue()); // 设置 userId 的值
-                    // 在这里可以使用获取到的userId进行相应的操作
-                    System.out.println("Useridname: " + userId);
-                }
-            }
-        }
-
-
-            Teacher teacher = teachersDao.getTeacherByUserId(userId);
-            // 进行其他操作...
+        String action = request.getParameter("action");
+        UsersDaoImpl usersDao = new UsersDaoImpl();
+        if ("modify".equals(action)) {
+            int userId = Integer.parseInt(request.getParameter("uid"));
+            Teacher teacher = teachersDao.getTeacherById(userId);
             Teacher teacher1 = new Teacher();
             teacher1.setUserID(userId);
-
-        // 如果没有找到对应的teacher，则可以根据具体业务逻辑处理，这里简化为直接返回
-        if (teacher == null) {
+            if (teacher == null) {
+                String name = request.getParameter("name");
+                String major = request.getParameter("profession");
+                String email = request.getParameter("email");
+                String bio = request.getParameter("bio");
+                teacher1.setName(name);
+                teacher1.setProfession(major);
+                teacher1.setEmail(email);
+                teacher1.setBio(bio);
+                teachersDao.saveTeacher(teacher1); // 可以根据实际情况重定向到错误页面
+                response.sendRedirect("homepaget.jsp");
+                return;
+            }
             String name = request.getParameter("name");
             String major = request.getParameter("profession");
             String email = request.getParameter("email");
             String bio = request.getParameter("bio");
-            teacher1.setName(name);
-            teacher1.setProfession(major);
-            teacher1.setEmail(email);
-            teacher1.setBio(bio);
-            teachersDao.saveTeacher(teacher1); // 可以根据实际情况重定向到错误页面
+
+            teacher.setName(name);
+            teacher.setProfession(major);
+            teacher.setEmail(email);
+            teacher.setBio(bio);
+
+            teachersDao.updateTeacher(teacher);
             response.sendRedirect("homepaget.jsp");
-            return;
         }
+        if ("modifyy".equals(action)) {
+            int tid = Integer.parseInt(request.getParameter("id"));
+            Teacher teacher = teachersDao.getTeacherById(tid);
+            String name = request.getParameter("name");
+            String major = request.getParameter("profession");
+            String email = request.getParameter("email");
+            String bio = request.getParameter("bio");
 
-        // 获取表单参数
-        String name = request.getParameter("name");
-        String major = request.getParameter("profession");
-        String email = request.getParameter("email");
-        String bio = request.getParameter("bio");
+            teacher.setName(name);
+            teacher.setProfession(major);
+            teacher.setEmail(email);
+            teacher.setBio(bio);
 
-        // 更新Teacher信息
-        teacher.setName(name);
-        teacher.setProfession(major);
-        teacher.setEmail(email);
-        teacher.setBio(bio);
-
-        // 保存更新后的教师信息到数据库
-        teachersDao.updateTeacher(teacher);
-
-        // 重定向到成功页面或其他页面
-        response.sendRedirect("homepaget.jsp");
+            teachersDao.updateTeacher(teacher);
+            response.sendRedirect("manageTeacher.jsp");
+        }
+        if ("delete".equals(action)) {
+            int tid = Integer.parseInt(request.getParameter("id"));
+            Teacher teacher = teachersDao.getTeacherById(tid);
+            int uid = teacher.getUserID();
+            ResearchDaoImpl researchDao = new ResearchDaoImpl();
+            List<Research> researchs = researchDao.getResearchByTeacherId(tid);
+            for(int i = 0; i < researchs.size(); i++) {
+                researchDao.deleteResearch(researchs.get(i).getResearchID());
+            }
+            teachersDao.deleteTeacher(teacher.getTeacherID());
+            usersDao.deleteUser(uid);
+            response.sendRedirect("manageTeacher.jsp");
+        }
+        if("add".equals(action)){
+            User newuser = new User();
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            newuser.setUsername(username);
+            newuser.setPassword(password);
+            newuser.setUserType(UserType.Teacher);
+            usersDao.saveUser(newuser);
+            User user1 = usersDao.getUserByUsername(username);
+            int uid = user1.getUserID();
+            Teacher newteacher = new Teacher();
+            String name = request.getParameter("name");
+            String major = request.getParameter("profession");
+            String email = request.getParameter("email");
+            String bio = request.getParameter("bio");
+            newteacher.setName(name);
+            newteacher.setProfession(major);
+            newteacher.setEmail(email);
+            newteacher.setBio(bio);
+            newteacher.setUserID(uid);
+            teachersDao.saveTeacher(newteacher);
+            response.sendRedirect("manageTeacher.jsp");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -37,7 +37,7 @@
         <td><%= teachers.get(i).getName() %></td>
         <td><%= teachers.get(i).getProfession() %></td>
         <td><%= teachers.get(i).getBio() %></td>
-        <td><a type="submit" href="manageTeacher.jsp?tid=<%= teachers.get(i).getTeacherID() %>">修改</a></td>
+        <td><a href="modifyTeacher.jsp?admintid=<%= teachers.get(i).getTeacherID() %>">修改</a></td>
         <td>
             <form action="TeacherServlet" method="post">
                 <input type="hidden" name="action" value="delete">
@@ -68,7 +68,7 @@
         <td><%= teachers.get(i).getName() %></td>
         <td><%= teachers.get(i).getProfession() %></td>
         <td><%= teachers.get(i).getBio() %></td>
-        <td><a type="submit" href="manageTeacher.jsp?tid=<%= teachers.get(i).getTeacherID() %>">修改</a></td>
+        <td><a href="modifyTeacher.jsp?admintid=<%= teachers.get(i).getTeacherID() %>">修改</a></td>
         <td>
             <form action="TeacherServlet" method="post">
                 <input type="hidden" name="action" value="delete">
@@ -80,8 +80,8 @@
     <% } %>
 </table>
 <% } %>
-<div><button class="center-button" onclick="window.location.href = 'addNewTeacher.jsp.jsp'">新增教师</button></div>
-<div><button class="center-button" onclick="window.location.href = 'homepages.jsp'">返回主页</button></div>
+<div><button class="center-button" onclick="window.location.href = 'addNewTeacher.jsp'">新增教师</button></div>
+<div><button class="center-button" onclick="window.location.href = 'homepageadmin.jsp'">返回主页</button></div>
 </body>
 </html>
 
