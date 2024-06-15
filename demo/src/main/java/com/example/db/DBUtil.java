@@ -3,7 +3,7 @@ package com.example.db;
 import java.sql.*;
 
 public class DBUtil {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/teacher";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/db02";
     private static final String USER = "root";
     private static final String PASSWORD = "123456";
 
@@ -65,6 +65,30 @@ public class DBUtil {
         }
     }
 
+    public static int executeUpdateAndGetGeneratedKey(String sql, Object... params) throws SQLException {
+        int generatedKey = -1;
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            setParameters(ps, params);
+
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user failed, no rows affected.");
+            }
+
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    generatedKey = generatedKeys.getInt(1);
+                } else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
+        }
+
+        return generatedKey;
+    }
+
     public static ResultSet executeQuery(String sql, Object... params) throws SQLException {
         connection = getConnection();
         PreparedStatement ps = connection.prepareStatement(sql);
@@ -82,4 +106,3 @@ public class DBUtil {
         }
     }
 }
-

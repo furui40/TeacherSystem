@@ -14,10 +14,10 @@
     <form class="search-form" action="TeacherRecommendServlet" method="GET">
         <label class="form-label" for="profession">请选择专业：</label>
         <select class="form-select" id="profession" name="profession">
-            <option value="math">计算机</option>
-            <option value="physics">物理</option>
-            <option value="chemistry">化学</option>
-            <option value="biology">生物</option>
+            <option value="计算机">计算机</option>
+            <option value="英语">英语</option>
+            <option value="数学">数学</option>
+            <option value="生物">生物</option>
         </select>
         <input class="form-submit" type="submit" value="查找">
     </form>

@@ -1,8 +1,11 @@
 package com.example.myservlet;
 
 import com.example.dao.UsersDao;
+import com.example.dao.StudentDao;
 import com.example.dao.impl.UsersDaoImpl;
+import com.example.dao.impl.StudentDaoImpl;
 import com.example.entity.User;
+import com.example.entity.Student;
 import com.example.entity.UserType;
 
 import javax.servlet.ServletException;
@@ -16,10 +19,12 @@ import java.io.IOException;
 public class UserServlet extends HttpServlet {
 
     private UsersDao usersDao;
+    private StudentDao studentDao;
 
     @Override
     public void init() throws ServletException {
         usersDao = new UsersDaoImpl();
+        studentDao = new StudentDaoImpl();
     }
 
     @Override
@@ -47,7 +52,21 @@ public class UserServlet extends HttpServlet {
 
         // 创建用户对象并保存到数据库
         User user = new User(username, password, userType);
-        usersDao.saveUser(user);
+        int getUserID = usersDao.saveUser(user);
+
+        // 如果用户类型是学生，保存学生信息到学生表
+        if (userType == UserType.Student) {
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+
+            // 创建学生对象并保存到数据库
+            Student student = new Student();
+            student.setUserId(getUserID);
+            student.setName(name);
+            student.setEmail(email);
+            System.out.println(getUserID);
+            studentDao.addStudent(student);
+        }
 
         // 注册成功，重定向到登录页面
         response.sendRedirect("login.jsp");
