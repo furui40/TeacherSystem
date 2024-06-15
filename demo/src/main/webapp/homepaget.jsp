@@ -1,7 +1,5 @@
 <%@ page import="com.example.dao.impl.TeachersDaoImpl" %>
 <%@ page import="com.example.entity.Teacher" %>
-<%@ page import="com.example.dao.impl.UsersDaoImpl" %>
-<%@ page import="com.example.entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
