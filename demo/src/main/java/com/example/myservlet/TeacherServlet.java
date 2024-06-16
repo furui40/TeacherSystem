@@ -1,13 +1,8 @@
 package com.example.myservlet;
 
 import com.example.dao.TeachersDao;
-import com.example.dao.impl.ResearchDaoImpl;
-import com.example.dao.impl.TeachersDaoImpl;
-import com.example.dao.impl.UsersDaoImpl;
-import com.example.entity.Research;
-import com.example.entity.Teacher;
-import com.example.entity.User;
-import com.example.entity.UserType;
+import com.example.dao.impl.*;
+import com.example.entity.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -82,10 +77,27 @@ public class TeacherServlet extends HttpServlet {
             int tid = Integer.parseInt(request.getParameter("id"));
             Teacher teacher = teachersDao.getTeacherById(tid);
             int uid = teacher.getUserID();
+            AppointmentDaoImpl appointmentDao = new AppointmentDaoImpl();
+            List<Appointment> appointments = appointmentDao.getAppointmentsByTeacherId(tid);
+            if(appointments.size() != 0)
+            {
+                for(int i = 0;i < appointments.size(); i++){
+                    appointmentDao.deleteAppointment(appointments.get(i).getAppointmentID());
+                }
+            }
+            ScheduleDaoImpl scheduleDao = new ScheduleDaoImpl();
+            List<Schedule> schedules = scheduleDao.getScheduleByTeacherId(tid);
+            if(schedules.size() != 0){
+                for(int i = 0; i < schedules.size(); i++){
+                    scheduleDao.deleteSchedule(schedules.get(i).getTeacherID(),schedules.get(i).getDate(),schedules.get(i).getTimeSlot());
+                }
+            }
             ResearchDaoImpl researchDao = new ResearchDaoImpl();
             List<Research> researchs = researchDao.getResearchByTeacherId(tid);
-            for(int i = 0; i < researchs.size(); i++) {
-                researchDao.deleteResearch(researchs.get(i).getResearchID());
+            if(researchs.size() != 0){
+                for(int i = 0; i < researchs.size(); i++) {
+                    researchDao.deleteResearch(researchs.get(i).getResearchID());
+                }
             }
             teachersDao.deleteTeacher(teacher.getTeacherID());
             usersDao.deleteUser(uid);

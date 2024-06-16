@@ -21,6 +21,11 @@
         <input class="form-submit" type="submit" value="查找">
     </form>
 </div>
+<% if (request.getAttribute("msg") != null) { %>
+<script>
+    alert("<%= request.getAttribute("msg") %>");
+</script>
+<% } %>
 <% if (request.getAttribute("appointments") != null) { %>
 <h2>搜索结果：</h2>
 <table>

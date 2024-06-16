@@ -23,7 +23,7 @@ public class SetAvailabilityServlet extends HttpServlet {
         scheduleDao = new ScheduleDaoImpl(); // ³õÊ¼»¯ DAO ÊµÀý
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response){
             
     }
 }

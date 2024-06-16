@@ -9,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -75,14 +76,17 @@ public class AppointmentAdminServlet extends HttpServlet {
             List<Student> students = studentDao.getStudentsByName(studentName);
             if (students.size() == 1) {
                 int studentId = students.get(0).getStudentId();
-                Schedule schedule = new Schedule(teacherId, date, timeSlot);
                 Appointment appointment = new Appointment(studentId, teacherId, date, place, timeSlot);
                 ScheduleDao scheduleDao = new ScheduleDaoImpl();
                 AppointmentDao appointmentDao = new AppointmentDaoImpl();
-                scheduleDao.saveSchedule(schedule);
-                appointmentDao.saveAppointment(appointment);
+                if(scheduleDao.exists(teacherId,date,timeSlot)){
+                    scheduleDao.deleteSchedule(teacherId, date, timeSlot);
+                    appointmentDao.saveAppointment(appointment);
+                }else{
+                    request.setAttribute("msg","ÃÌº” ß∞‹");
+                }
             }
-            response.sendRedirect("manageAppointment.jsp");
+            request.getRequestDispatcher("manageAppointment.jsp").forward(request, response);
         }else if("deletey".equals(action)){
             int appointId = Integer.parseInt(request.getParameter("id"));
             appointmentDao.deleteAppointment(appointId);
