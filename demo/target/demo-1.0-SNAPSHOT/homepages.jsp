@@ -57,7 +57,7 @@
 <div class="buttons">
   <button class="center-button"  onclick="window.location.href = 'searchTeacher.jsp'">检索教师</button>
   <button class="center-button"  onclick="window.location.href = 'recommendTeacher.jsp'">推荐教师</button>
-  <button class="center-button" onclick="window.location.href = 'showAppointment.jsp?studentId=<%=studentId%>';">查看预约记录</button>
+  <button class="center-button" onclick="window.location.href = 'studentShowAppointment.jsp?studentId=<%=studentId%>';">查看预约记录</button>
 </div>
 </body>
 </html>

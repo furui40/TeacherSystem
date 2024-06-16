@@ -2,5 +2,6 @@ package com.example.entity;
 
 public enum UserType {
     Teacher,
-    Student
+    Student,
+    Admin
 }

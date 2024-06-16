@@ -1,6 +1,8 @@
 package com.example.dao;
 
 import com.example.entity.Schedule;
+
+import java.util.Date;
 import java.util.List;
 
 public interface ScheduleDao {
@@ -9,5 +11,6 @@ public interface ScheduleDao {
     List<Schedule> getScheduleByTeacherId(int teacherId);
     List<Schedule> getAllSchedules();
     void updateSchedule(Schedule schedule);
-    void deleteSchedule(int id);
+    boolean deleteSchedule(int teacherId, Date date, String timeSlot);
+    boolean exists(int teacherID, Date date, String timeSlot);
 }

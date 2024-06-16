@@ -15,7 +15,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background-color: #f3a2a2;
+    background-color: #4fc8d7;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -39,7 +39,7 @@ tr:hover {
     width: 150px;
     margin: 20px auto;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #3e8ecb;
     color: #fff;
     text-align: center;
     text-decoration: none;
@@ -50,5 +50,5 @@ tr:hover {
 }
 
 .center-button:hover {
-    background-color: #45a049;
+    background-color: #9eaae3;
 }

@@ -4,7 +4,6 @@ import com.example.dao.ScheduleDao;
 import com.example.dao.AppointmentDao;
 import com.example.dao.impl.ScheduleDaoImpl;
 import com.example.dao.impl.AppointmentDaoImpl;
-import com.example.entity.Schedule;
 import com.example.entity.Appointment;
 
 import javax.servlet.*;
@@ -36,21 +35,25 @@ public class AppointmentServlet extends HttpServlet {
             return;
         }
 
-        // 创建 Schedule 对象和 Appointment 对象
-        Schedule schedule = new Schedule(teacherId, date, timeSlot);
-        Appointment appointment = new Appointment(studentId, teacherId, date, place, timeSlot);
-
-        // 将数据插入到数据库的 schedule 表和 appointments 表中
+        // 删除 schedule 表中的记录
         ScheduleDao scheduleDao = new ScheduleDaoImpl();
+        boolean isDeleted = scheduleDao.deleteSchedule(teacherId, date, timeSlot);
+
+        // 处理删除结果
+        if (!isDeleted) {
+            System.out.println(teacherId);
+            System.out.println(date);
+            System.out.println(timeSlot);
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Failed to delete schedule");
+            return;
+        }
+
+        // 创建 Appointment 对象并插入 appointments 表中
+        Appointment appointment = new Appointment(studentId, teacherId, date, place, timeSlot);
         AppointmentDao appointmentDao = new AppointmentDaoImpl();
-
-        // 插入到 schedule 表
-        scheduleDao.saveSchedule(schedule);
-
-        // 插入到 appointments 表
         appointmentDao.saveAppointment(appointment);
 
-        // 可选：重定向到成功页面或其他页面
+        // 重定向到成功页面或其他页面
         response.sendRedirect("homepages.jsp");
     }
 
