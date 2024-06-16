@@ -8,6 +8,7 @@ public interface TeachersDao {
     void saveTeacher(Teacher teacher);
     Teacher getTeacherById(int id);
     Teacher getTeacherByUserId(int userId);
+    Teacher getTeacherByName(String name);
     List<Teacher> getAllTeachers();
     List<Teacher> getTeachersByMajor(String major); // New method declaration
     void updateTeacher(Teacher teacher);

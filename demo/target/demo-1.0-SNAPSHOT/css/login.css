@@ -6,7 +6,7 @@ body {
 }
 
 table {
-    width: 600px;
+    width: 60%;
     margin: 0 auto;
     border-collapse: separate;
     background-color: #fff;
@@ -58,7 +58,7 @@ h1 {
 
 .center-button {
     background-color: #007bff;
-    width: 600px;
+    width: 60%;
     color: #fff;
     padding: 10px 20px;
     border-radius: 3px;

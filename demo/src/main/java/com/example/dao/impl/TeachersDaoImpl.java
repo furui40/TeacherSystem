@@ -73,6 +73,31 @@ public class TeachersDaoImpl implements TeachersDao {
     }
 
     @Override
+    public Teacher getTeacherByName(String name) {
+        String sql = "SELECT * FROM Teachers WHERE Name = ?";
+        Teacher teacher = null;
+
+        try {
+            ResultSet rs = DBUtil.executeQuery(sql, name);
+            if (rs.next()) {
+                teacher = new Teacher();
+                teacher.setTeacherID(rs.getInt("TeacherID"));
+                teacher.setUserID(rs.getInt("UserID"));
+                teacher.setName(rs.getString("Name"));
+                teacher.setEmail(rs.getString("Email"));
+                teacher.setProfession(rs.getString("Profession"));
+                teacher.setBio(rs.getString("Bio"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close();
+        }
+
+        return teacher;
+    }
+
+    @Override
     public List<Teacher> getAllTeachers() {
         String sql = "SELECT * FROM Teachers";
         List<Teacher> teachers = new ArrayList<>();

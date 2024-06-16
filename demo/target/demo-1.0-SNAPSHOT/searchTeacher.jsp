@@ -40,7 +40,7 @@
   <% } %>
 </table>
 <% } else { %>
-<p>没有搜索到符合条件的教师信息。</p>
+<h2>没有搜索到符合条件的教师信息。</h2>
 <% } %>
 
 <div><button class="center-button" onclick="window.location.href = 'homepages.jsp'">返回主页</button></div>
