@@ -54,6 +54,8 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("homepaget.jsp");
             } else if (user.getUserType() == UserType.Student) {
                 response.sendRedirect("homepages.jsp");
+            } else if(user.getUserType() == UserType.Admin){
+                response.sendRedirect("homepageadmin.jsp");
             }
         } else {
             // Set an error message and forward back to the login page

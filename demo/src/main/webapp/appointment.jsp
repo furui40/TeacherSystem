@@ -66,7 +66,7 @@
 <html>
 <head>
     <title>预约查询</title>
-    <link rel="stylesheet" type="text/css" href="css/appointment.css">
+    <link rel="stylesheet" type="text/css" href="css/appoint.css">
 </head>
 <body>
 <h1>预约查询</h1>
