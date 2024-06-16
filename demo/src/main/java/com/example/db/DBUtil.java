@@ -3,7 +3,7 @@ package com.example.db;
 import java.sql.*;
 
 public class DBUtil {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/teacher";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/db02";
     private static final String USER = "root";
     private static final String PASSWORD = "123456";
 
@@ -88,6 +88,8 @@ public class DBUtil {
 
         return generatedKey;
     }
+
+
 
     public static ResultSet executeQuery(String sql, Object... params) throws SQLException {
         connection = getConnection();

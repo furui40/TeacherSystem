@@ -57,7 +57,7 @@
         <% } %>
     </div>
 </div>
-<button class="center-button" onclick="window.location.href = 'appointment.jsp?TeacherId=<%= teacher.getTeacherID() %>'">预约查询</button>
+<button class="center-button" onclick="window.location.href = 'studentAppointment.jsp?TeacherId=<%= teacher.getTeacherID() %>'">预约查询</button>
 <div><button class="center-button" onclick="window.location.href = 'homepages.jsp'">返回主页</button></div>
 </body>
 </html>

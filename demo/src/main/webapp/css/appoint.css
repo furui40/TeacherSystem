@@ -1,5 +1,6 @@
-/* appoint.css */
+/* appointment.css */
 
+/* Body and general styling */
 body {
     font-family: 'Times New Roman', Times, serif;
     background-color: rgba(239, 200, 135, 0.1);
@@ -14,6 +15,7 @@ h1 {
     color: #333;
 }
 
+/* Table styling */
 table {
     width: 80%;
     margin: 20px auto;
@@ -35,6 +37,7 @@ table td {
     border: 1px solid #999;
 }
 
+/* Centered button */
 .center-button {
     display: block;
     width: 200px;
@@ -53,6 +56,51 @@ table td {
 .center-button:hover {
     background-color: #443a27;
     color: #f1deba;
+}
+
+/* Dropdown (select) styling */
+select, label {
+    width: 250px; /* Adjust width as needed */
+    margin: 0 auto; /* Center horizontally */
+    display: block; /* Ensures it spans the width set */
+    font-size: 16px; /* Adjust font size */
+    padding: 10px; /* Adjust padding for better appearance */
+    margin-bottom: 10px; /* Space below the select */
+}
+
+/* Submit button styling */
+button[type="submit"] {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #dedc52;
+}
+
+/* Pagination links */
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #e2d166;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #c0c280;
 }
 
 /* Responsive adjustments */

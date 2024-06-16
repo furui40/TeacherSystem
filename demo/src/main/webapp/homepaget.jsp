@@ -55,8 +55,8 @@
 <div class="buttons">
     <button class="center-button"  onclick="window.location.href = 'modifyTeacher.jsp?uid=<%=tid%>'">编辑教师基本信息</button>
     <button class="center-button"  onclick="window.location.href = 'selectResearch.jsp?uid=<%=tid%>'">修改个人成果展示</button>
-    <button class="center-button"  onclick="window.location.href = 'modifyTeacher.jsp?uid=<%=tid%>'">设置个人日程</button>
-    <button class="center-button"  onclick="window.location.href = 'modifyTeacher.jsp?uid=<%=tid%>'">查看预约情况</button>
+    <button class="center-button"  onclick="window.location.href = 'teacherSetSchedule.jsp?uid=<%=tid%>'">设置个人日程</button>
+    <button class="center-button"  onclick="window.location.href = 'teacherAppointmentShow.jsp?uid=<%=tid%>'">查看预约情况</button>
 </div>
 </body>
 </html>

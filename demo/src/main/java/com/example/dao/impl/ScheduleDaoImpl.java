@@ -105,14 +105,72 @@ public class ScheduleDaoImpl implements ScheduleDao {
     }
 
     @Override
-    public void deleteSchedule(int id) {
-        String sql = "DELETE FROM Schedule WHERE ScheduleID = ?";
-        try {
-            DBUtil.executeUpdate(sql, id);
+    public boolean deleteSchedule(int teacherId, java.util.Date date, String timeSlot) {
+        String sql = "DELETE FROM schedule WHERE teacherId = ? AND date = ? AND timeSlot = ?";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, teacherId);
+            stmt.setDate(2, new java.sql.Date(date.getTime()));
+            stmt.setString(3, timeSlot);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBUtil.close();
+            return false;
         }
     }
+
+    @Override
+    public boolean exists(int teacherID, java.util.Date date, String timeSlot) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBUtil.getConnection(); // Obtain connection from DBUtil
+
+            // Prepare SQL query to check existence of schedule
+            String sql = "SELECT COUNT(*) AS count FROM schedule WHERE teacherID = ? AND date = ? AND timeSlot = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, teacherID);
+            stmt.setDate(2, new java.sql.Date(date.getTime())); // Assuming 'date' is java.util.Date
+            stmt.setString(3, timeSlot);
+
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt("count");
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQL exceptions appropriately or throw an exception
+        } finally {
+            // Close resources in finally block
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return false; // Default return if something goes wrong
+    }
+
+
 }

@@ -1,0 +1,104 @@
+/* tech-style.css */
+
+/* Body and general styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 36px;
+    color: #333;
+}
+
+/* Table styling */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 2px solid #d6e8f5; /* Blue border */
+    background-color: #fff; /* White background */
+}
+
+table th {
+    background-color: #bad1e0; /* Blue header */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #444e55; /* Blue border */
+}
+
+table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #97cef3; /* Blue border */
+}
+
+/* Centered button */
+button[type="submit"], .center-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #94cbef; /* Blue button */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button[type="submit"]:hover, .center-button:hover {
+    background-color: #91c5e7; /* Darker blue on hover */
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+/* Pagination links */
+div {
+    text-align: center;
+    margin: 20px auto;
+}
+
+div a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #3498db; /* Blue background */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+div a:hover {
+    background-color: #b0d6ef; /* Darker blue on hover */
+}
+
+/* Return home button */
+button {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #3498db; /* Blue button */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
