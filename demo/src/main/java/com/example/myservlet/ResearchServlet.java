@@ -32,6 +32,8 @@ public class ResearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String keyword = request.getParameter("keyword");
         List<Research> allResearches = researchDao.getAllResearches();
         List<Research> matchedResearches = new ArrayList<>();
