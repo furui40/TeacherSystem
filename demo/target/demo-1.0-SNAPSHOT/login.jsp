@@ -2,11 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <h1>欢迎来到教师信息管理系统</h1>
     <title>登录</title>
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
+<h1>欢迎来到教师信息管理系统</h1>
+<%-- 错误消息显示区域 --%>
+<%
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    if (errorMessage != null) {
+%>
+<div class="error-message"><%= errorMessage %></div>
+<%
+    }
+%>
 <table>
     <tr>
         <th colspan="2">登录</th>
@@ -28,4 +37,3 @@
 <div><button class="center-button" onclick="window.location.href = 'register.jsp'">前往注册</button></div>
 </body>
 </html>
-
