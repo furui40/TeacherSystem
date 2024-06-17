@@ -1,7 +1,7 @@
 <%@ page import="com.example.entity.Teacher" %>
 <%@ page import="com.example.dao.impl.TeachersDaoImpl" %>
 <%@ page import="com.example.dao.impl.UsersDaoImpl" %>
-<%--<%@ include file="checklogin.jsp"%>--%>
+<%@ include file="checklogin.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     request.setAttribute("pageRole", "Teacher");
@@ -30,7 +30,7 @@
     }
     String actionvalue = "modify" + admin;
     if("-1".equals(tid)){
-        Cookie[] cookies = request.getCookies();
+//        Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("id")) {

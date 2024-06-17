@@ -1,7 +1,8 @@
+<%@ include file="checklogin.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
-    String username = null;
+//    Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
+//    String username = null;
 
     // 遍历Cookie数组，查找名为 "username" 的Cookie
     if (cookies != null) {

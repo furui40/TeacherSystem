@@ -12,6 +12,7 @@
 <%@ page import="com.example.entity.Teacher" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ include file="checklogin.jsp"%>
 <link rel="stylesheet" type="text/css" href="css/set.css">
 
 

@@ -3,6 +3,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="com.example.dao.impl.TeachersDaoImpl" %>
 <%@ page import="com.example.entity.Teacher" %>
+<%@ include file="checklogin.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>

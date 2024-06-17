@@ -1,7 +1,7 @@
 <%@ page import="com.example.entity.Teacher" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ include file="checklogin.jsp" %>--%>
+<%@ include file="checklogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>

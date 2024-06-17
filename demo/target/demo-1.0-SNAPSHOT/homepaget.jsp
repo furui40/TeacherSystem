@@ -1,8 +1,9 @@
 <%@ page import="com.example.dao.impl.TeachersDaoImpl" %>
 <%@ page import="com.example.entity.Teacher" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="checklogin.jsp"%>
 <%
-    Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
+//    Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
     String id = null;
 
     // 遍历Cookie数组，查找名为 "id" 的Cookie
@@ -18,7 +19,9 @@
     int uid = -1;
     int tid = -1;
     String name = null;
-    uid = Integer.parseInt(id);
+    if(id != null){
+        uid = Integer.parseInt(id);
+    }
     if(uid != -1){
         TeachersDaoImpl TeacherDao = new TeachersDaoImpl();
         teacher = TeacherDao.getTeacherByUserId(uid);

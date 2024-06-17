@@ -11,8 +11,13 @@
 <%
     String errorMessage = (String) request.getAttribute("errorMessage");
     if (errorMessage != null) {
+        if(errorMessage.equals("Invalid username or password")){
+            errorMessage = "密码错误";
+        } else if (errorMessage.equals("Username does not exist. Please try again.")) {
+            errorMessage = "用户名不存在";
+        }
 %>
-<div class="error-message"><%= errorMessage %></div>
+<h2><div class="error-message"><%= errorMessage %></div></h2>
 <%
     }
 %>

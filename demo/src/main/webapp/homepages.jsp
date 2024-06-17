@@ -2,10 +2,10 @@
 <%@ page import="com.example.dao.StudentDao" %>
 <%@ page import="com.example.dao.impl.StudentDaoImpl" %>
 <%@ page import="com.example.entity.Student" %>
-
+<%@ include file="checklogin.jsp"%>
 <%
-  Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
-  String username = null;
+//  Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
+//  String username = null;
   int userId = -1; // 初始化为-1，表示未找到有效的用户ID
 
 // 遍历Cookie数组，查找名为 "username" 和 "id" 的Cookie

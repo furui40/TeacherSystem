@@ -6,6 +6,7 @@
 <%@ page import="com.example.dao.impl.TeachersDaoImpl" %>
 <%@ page import="com.example.entity.Appointment" %>
 <%@ page import="com.example.entity.Teacher" %>
+<%@ include file="checklogin.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>

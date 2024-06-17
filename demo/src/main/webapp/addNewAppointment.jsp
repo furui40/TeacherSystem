@@ -1,9 +1,4 @@
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.DayOfWeek" %>
-<%@ page import="java.time.temporal.TemporalAdjusters" %>
-<%@ page import="java.time.format.TextStyle" %>
-<%@ page import="java.util.Locale" %>
+<%@ include file="checklogin.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>

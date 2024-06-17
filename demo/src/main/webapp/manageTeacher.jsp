@@ -1,6 +1,7 @@
 <%@ page import="com.example.entity.Teacher" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.dao.impl.TeachersDaoImpl" %>
+<%@ include file="checklogin.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>

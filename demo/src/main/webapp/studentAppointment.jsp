@@ -12,7 +12,7 @@
 <%@ page import="java.util.Locale" %>
 <%@ page import="com.example.dao.StudentDao" %>
 <%@ page import="com.example.dao.impl.StudentDaoImpl" %>
-
+<%@ include file="checklogin.jsp"%>
 <%
     // 获取传入的TeacherId参数
     int teacherId = Integer.parseInt(request.getParameter("TeacherId"));
@@ -50,7 +50,7 @@
     ScheduleDao scheduleDao = new ScheduleDaoImpl();
     List<Schedule> schedules = scheduleDao.getScheduleByTeacherId(teacherId);
 
-    Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
+//    Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
     int userId = -1; // 初始化为-1，表示未找到有效的用户ID
 
     // 遍历Cookie数组，查找名为 "id" 的Cookie
