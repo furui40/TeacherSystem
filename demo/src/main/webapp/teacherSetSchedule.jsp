@@ -112,7 +112,7 @@
 
 
             %>
-            <td><%= isAvailable ? "设置空闲" : "非空闲" %><br><input type="checkbox" name="<%= checkBoxName %>" value="<%= checkBoxValue %>" <%= isChecked %>></td>
+            <td><%= isAvailable ? "可被预约" : "不可被预约" %><br><input type="checkbox" name="<%= checkBoxName %>" value="<%= checkBoxValue %>" <%= isChecked %>></td>
             <% } %>
         </tr>
         <% } %>

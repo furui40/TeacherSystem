@@ -1,9 +1,7 @@
 package com.example.myservlet;
 
 import com.example.dao.UsersDao;
-import com.example.dao.impl.LoginDaoImpl;
 import com.example.dao.impl.UsersDaoImpl;
-import com.example.entity.Admin;
 import com.example.entity.User;
 import com.example.entity.UserType;
 
@@ -11,9 +9,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.HttpCookie;
-import java.sql.SQLException;
 
 @WebServlet(name = "LoginServlet", value = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -45,6 +40,7 @@ public class LoginServlet extends HttpServlet {
             Cookie usernameCookie = new Cookie("id", userId);
             Cookie usernameCookie2 = new Cookie("username", username);
             usernameCookie.setMaxAge(3600); // 1 hour
+            usernameCookie2.setMaxAge(3600); // 1 hour
             response.addCookie(usernameCookie);
             response.addCookie(usernameCookie2);
             HttpSession session = request.getSession();

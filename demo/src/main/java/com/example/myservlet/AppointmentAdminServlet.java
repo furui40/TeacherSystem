@@ -71,10 +71,11 @@ public class AppointmentAdminServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
             TeachersDaoImpl teachersDao = new TeachersDaoImpl();
-            int teacherId = teachersDao.getTeacherByName(teacherName).getTeacherID();
+            Teacher teacher = teachersDao.getTeacherByName(teacherName);
             StudentDaoImpl studentDao = new StudentDaoImpl();
             List<Student> students = studentDao.getStudentsByName(studentName);
-            if (students.size() == 1) {
+            if (students.size() == 1 || teacher != null) {
+                int teacherId = teacher.getTeacherID();
                 int studentId = students.get(0).getStudentId();
                 Appointment appointment = new Appointment(studentId, teacherId, date, place, timeSlot);
                 ScheduleDao scheduleDao = new ScheduleDaoImpl();
@@ -82,9 +83,9 @@ public class AppointmentAdminServlet extends HttpServlet {
                 if(scheduleDao.exists(teacherId,date,timeSlot)){
                     scheduleDao.deleteSchedule(teacherId, date, timeSlot);
                     appointmentDao.saveAppointment(appointment);
-                }else{
-                    request.setAttribute("msg","ÃÌº” ß∞‹");
                 }
+            }else{
+                request.setAttribute("msg","ÃÌº” ß∞‹");
             }
             request.getRequestDispatcher("manageAppointment.jsp").forward(request, response);
         }else if("deletey".equals(action)){
