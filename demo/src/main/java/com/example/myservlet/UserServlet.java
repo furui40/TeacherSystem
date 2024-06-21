@@ -7,6 +7,7 @@ import com.example.dao.impl.StudentDaoImpl;
 import com.example.entity.User;
 import com.example.entity.Student;
 import com.example.entity.UserType;
+import com.example.utils.MailUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +31,8 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         // 获取表单数据
         String username = request.getParameter("uid");
         String password = request.getParameter("pwd");
@@ -66,8 +69,10 @@ public class UserServlet extends HttpServlet {
             student.setEmail(email);
             System.out.println(getUserID);
             studentDao.addStudent(student);
-        }
 
+            String detail = username + "," + password + "," + name;
+            MailUtil.sendEmail(email, detail, 0);
+        }
         // 注册成功，重定向到登录页面
         response.sendRedirect("login.jsp");
     }

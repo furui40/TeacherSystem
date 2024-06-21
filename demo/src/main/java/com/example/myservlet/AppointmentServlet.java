@@ -4,7 +4,12 @@ import com.example.dao.ScheduleDao;
 import com.example.dao.AppointmentDao;
 import com.example.dao.impl.ScheduleDaoImpl;
 import com.example.dao.impl.AppointmentDaoImpl;
+import com.example.dao.impl.StudentDaoImpl;
+import com.example.dao.impl.TeachersDaoImpl;
 import com.example.entity.Appointment;
+import com.example.entity.Student;
+import com.example.entity.Teacher;
+import com.example.utils.MailUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -53,6 +58,15 @@ public class AppointmentServlet extends HttpServlet {
         AppointmentDao appointmentDao = new AppointmentDaoImpl();
         appointmentDao.saveAppointment(appointment);
 
+        StudentDaoImpl studentDao = new StudentDaoImpl();
+        Student student = studentDao.getStudentById(studentId);
+        String email = student.getEmail();
+        String studentName = student.getName();
+        TeachersDaoImpl teachersDao = new TeachersDaoImpl();
+        Teacher teacher = teachersDao.getTeacherById(teacherId);
+        String teacherName = teacher.getName();
+        String detail = studentName + "," + teacherName + "," + dateStr + "," +timeSlot + "," + place;
+        MailUtil.sendEmail(email, detail, 1);
         // 重定向到成功页面或其他页面
         response.sendRedirect("homepages.jsp");
     }
