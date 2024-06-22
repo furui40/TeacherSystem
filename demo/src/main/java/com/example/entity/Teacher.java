@@ -1,6 +1,7 @@
 package com.example.entity;
 
-public class Teacher {private int teacherID;
+public class Teacher {
+    private int teacherID;
     private int userID;
     private String name;
     private String email;
