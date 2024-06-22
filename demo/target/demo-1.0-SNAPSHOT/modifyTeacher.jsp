@@ -20,7 +20,7 @@
             admin = "y";
             link = "manageTeacher.jsp";
         }
-        String parameterName = "tid=";
+        String parameterName = "admintid=";
         int index = queryString.indexOf(parameterName);
         if (index != -1) {
             index += parameterName.length();
@@ -35,7 +35,15 @@
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("id")) {
                     userId = Integer.valueOf(cookie.getValue());
+                    System.out.println("userId = "+ userId);
                 }
+            }
+            TeachersDaoImpl teachersDao = new TeachersDaoImpl();
+            Teacher teacher = teachersDao.getTeacherByUserId(userId);
+            if(teacher != null){
+                Name = teacher.getName();
+                Mail = teacher.getEmail();
+                Bio = teacher.getBio();
             }
         }
     }else{
@@ -54,6 +62,7 @@
 <head>
     <title>教师信息编辑</title>
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css">
 </head>
 <body>
 <h1>教师信息编辑</h1>
@@ -91,6 +100,30 @@
         </tr>
     </form>
 </table>
+<%
+    if (admin.equals("y")) {
+%>
+<div class="sidebar">
+    <h2>欢迎访问</h2>
+    <h2>教师信息管理系统</h2>
+    <button class="sideButton"  onclick="window.location.href = 'homepageadmin.jsp'">返回主页</button>
+    <button class="sideButton"  onclick="window.location.href = 'manageTeacher.jsp'">教师信息管理</button>
+    <button class="sideButton"  onclick="window.location.href = 'manageResearch.jsp'">教师成果管理</button>
+    <button class="sideButton"  onclick="window.location.href = 'manageAppointment.jsp'">预约管理</button>
+    <button class="sideButton" onclick="window.location.href = 'login.jsp'">退出登录</button>
+</div>
+<% }else {%>
+<div class="sidebar">
+    <h2>欢迎访问</h2>
+    <h2>教师信息管理系统</h2>
+    <button class="sideButton" onclick="window.location.href = 'homepaget.jsp'">返回主页</button>
+    <button class="sideButton"  onclick="window.location.href = 'modifyTeacher.jsp?tid=<%=tid%>'">编辑教师基本信息</button>
+    <button class="sideButton"  onclick="window.location.href = 'selectResearch.jsp?uid=<%=tid%>'">修改个人成果展示</button>
+    <button class="sideButton"  onclick="window.location.href = 'teacherSetSchedule.jsp?uid=<%=tid%>'">设置个人日程</button>
+    <button class="sideButton"  onclick="window.location.href = 'teacherAppointmentShow.jsp?uid=<%=tid%>'">查看预约情况</button>
+    <button class="sideButton"  onclick="window.location.href = 'login.jsp'">退出登录</button>
+</div>
+<%}%>
 <div><button class="center-button" onclick="window.location.href = '<%=link%>'">返回</button></div>
 </body>
 </html>

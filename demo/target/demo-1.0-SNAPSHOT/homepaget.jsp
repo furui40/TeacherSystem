@@ -46,7 +46,7 @@
 <html>
 <head>
     <title>教师信息管理系统</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/login1.css">
 </head>
 <body>
 <h1><p><%= welcomeMessage %></p>
@@ -60,6 +60,7 @@
     <button class="center-button"  onclick="window.location.href = 'selectResearch.jsp?uid=<%=tid%>'">修改个人成果展示</button>
     <button class="center-button"  onclick="window.location.href = 'teacherSetSchedule.jsp?uid=<%=tid%>'">设置个人日程</button>
     <button class="center-button"  onclick="window.location.href = 'teacherAppointmentShow.jsp?uid=<%=tid%>'">查看预约情况</button>
+    <button class="center-button"  onclick="window.location.href = 'login.jsp'">退出登录</button>
 </div>
 </body>
 </html>

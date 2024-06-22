@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>登录</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/login1.css">
 </head>
 <body>
 <h1>欢迎来到教师信息管理系统</h1>

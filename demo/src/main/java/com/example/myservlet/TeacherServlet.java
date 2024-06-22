@@ -28,7 +28,7 @@ public class TeacherServlet extends HttpServlet {
         UsersDaoImpl usersDao = new UsersDaoImpl();
         if ("modify".equals(action)) {
             int userId = Integer.parseInt(request.getParameter("uid"));
-            Teacher teacher = teachersDao.getTeacherById(userId);
+            Teacher teacher = teachersDao.getTeacherByUserId(userId);
             Teacher teacher1 = new Teacher();
             teacher1.setUserID(userId);
             if (teacher == null) {

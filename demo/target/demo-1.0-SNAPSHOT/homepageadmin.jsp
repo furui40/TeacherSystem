@@ -29,7 +29,7 @@
 <html>
 <head>
     <title>教师信息管理系统</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/login1.css">
 </head>
 <body>
 <h1><p><%= welcomeMessage %></p>
@@ -42,6 +42,7 @@
     <button class="center-button"  onclick="window.location.href = 'manageTeacher.jsp'">教师信息管理</button>
     <button class="center-button"  onclick="window.location.href = 'manageResearch.jsp'">教师成果管理</button>
     <button class="center-button"  onclick="window.location.href = 'manageAppointment.jsp'">预约管理</button>
+    <button class="center-button"  onclick="window.location.href = 'login.jsp'">退出登录</button>
 </div>
 </body>
 </html>

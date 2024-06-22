@@ -8,6 +8,7 @@
 <head>
     <title>教师信息管理</title>
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function updateTeacherInfo() {
@@ -30,6 +31,7 @@
 <div><button class="center-button" onclick="updateTeacherInfo()">更新官网教师信息</button></div>
 <div class="form-wrapper">
     <form class="search-form" action="TeacherSearchServlet" method="GET">
+        <input type="hidden" name="action" value="adminSearch">
         <label class="form-label" for="keyword">请输入关键词：</label>
         <input class="form-input" type="text" id="keyword" name="keyword" required>
         <input class="form-submit" type="submit" value="查找">
@@ -98,7 +100,17 @@
     <% } %>
 </table>
 <% } %>
+<div class="sidebar">
+    <h2>欢迎访问</h2>
+    <h2>教师信息管理系统</h2>
+    <button class="sideButton"  onclick="window.location.href = 'homepageadmin.jsp'">返回主页</button>
+    <button class="sideButton"  onclick="window.location.href = 'manageTeacher.jsp'">教师信息管理</button>
+    <button class="sideButton"  onclick="window.location.href = 'manageResearch.jsp'">教师成果管理</button>
+    <button class="sideButton"  onclick="window.location.href = 'manageAppointment.jsp'">预约管理</button>
+    <button class="sideButton" onclick="window.location.href = 'login.jsp'">退出登录</button>
+</div>
 <div><button class="center-button" onclick="window.location.href = 'addNewTeacher.jsp'">新增教师</button></div>
 <div><button class="center-button" onclick="window.location.href = 'homepageadmin.jsp'">返回主页</button></div>
 </body>
 </html>
+

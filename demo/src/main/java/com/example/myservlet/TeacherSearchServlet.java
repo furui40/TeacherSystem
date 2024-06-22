@@ -37,7 +37,13 @@ public class TeacherSearchServlet extends HttpServlet {
         }
 
         request.setAttribute("teachers", matchedTeachers);
-        request.getRequestDispatcher("searchTeacher.jsp").forward(request, response);
+
+        String action = request.getParameter("action");
+        if(action.equals("search")){
+            request.getRequestDispatcher("searchTeacher.jsp").forward(request, response);
+        }else if(action.equals("adminSearch")){
+            request.getRequestDispatcher("manageTeacher.jsp").forward(request, response);
+        }
     }
 
     @Override

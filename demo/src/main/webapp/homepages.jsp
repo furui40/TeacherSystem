@@ -45,19 +45,20 @@
 <html>
 <head>
   <title>教师信息管理系统</title>
-  <link rel="stylesheet" type="text/css" href="css/login.css">
+  <link rel="stylesheet" type="text/css" href="css/login1.css">
 </head>
 <body>
 <h1><p><%= welcomeMessage %></p>
   <div class="identity">
       <%= identity %>
 </h1>
-<button class="center-button" onclick="window.location.href = 'listTeacher.jsp'">进入教师详细页后可预约</button>
 </div>
 <div class="buttons">
+  <button class="center-button" onclick="window.location.href = 'listTeacher.jsp'">教师列表</button>
   <button class="center-button"  onclick="window.location.href = 'searchTeacher.jsp'">检索教师</button>
   <button class="center-button"  onclick="window.location.href = 'recommendTeacher.jsp'">推荐教师</button>
   <button class="center-button" onclick="window.location.href = 'studentShowAppointment.jsp?studentId=<%=studentId%>';">查看预约记录</button>
+
 </div>
 </body>
 </html>
