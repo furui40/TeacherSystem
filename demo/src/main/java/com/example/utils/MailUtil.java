@@ -9,7 +9,7 @@ import java.util.Properties;
 
 //type = 0 学生注册成功
 //type = 1 预约成功
-//type = 2 预约删除通知
+//type = 2 预约删除
 public class MailUtil {
 	public static Session sendEmail(String email, String detail, int type) {
 		// 1.创建连接对象javax.mail.Session
@@ -117,7 +117,35 @@ public class MailUtil {
 						"如有任何疑问或需要进一步的帮助，请随时与我们联系。\n\n" +
 						"谢谢您的预约！祝您学习愉快！\n\n" +
 						"教师信息管理系统团队";
+			} else if (type == 2) {
+				String[] details = detail.split(",");
+				String studentName = details[0];
+				String teacherName = details[1];
+				String date = details[2];
+				String time = convertToChinese(details[3]);
+				String place = convertToChinese(details[4]);
+
+				content = "尊敬的 " +
+						studentName +
+						" 同学，\n" +
+						"您好！我们遗憾地通知您，您与 " +
+						teacherName +
+						" 老师预约的课程已被取消。\n" +
+						"预约详情如下：\n" +
+						"日期：" +
+						date +
+						"\n" +
+						"时间：" +
+						time +
+						"\n" +
+						"地点：" +
+						place +
+						"\n\n" +
+						"请您重新安排合适的时间进行预约。如有任何疑问或需要进一步的帮助，请随时与我们联系。\n\n" +
+						"感谢您的理解与支持！祝您学习愉快！\n\n" +
+						"教师信息管理系统团队";
 			}
+
 			message.setContent(content, "text/html;charset=UTF-8");
 
 			//5、发送邮件

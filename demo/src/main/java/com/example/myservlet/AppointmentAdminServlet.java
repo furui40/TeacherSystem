@@ -4,6 +4,7 @@ import com.example.dao.AppointmentDao;
 import com.example.dao.ScheduleDao;
 import com.example.dao.impl.*;
 import com.example.entity.*;
+import com.example.utils.MailUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -98,6 +99,18 @@ public class AppointmentAdminServlet extends HttpServlet {
             Schedule schedule = new Schedule(teacherId,date,time);
             scheduleDao.saveSchedule(schedule);
             appointmentDao.deleteAppointment(appointId);
+            StudentDaoImpl studentDao = new StudentDaoImpl();
+            Student student = studentDao.getStudentById(appointment.getStudentID());
+            String studentName = student.getName();
+            TeachersDaoImpl teachersDao = new TeachersDaoImpl();
+            Teacher teacher = teachersDao.getTeacherById(appointment.getTeacherID());
+            String teacherName = teacher.getName();
+            String dateStr = String.valueOf(date);
+            String timeSlot = appointment.getAppointmentTime();
+            String place = appointment.getPlace();
+            String email = student.getEmail();
+            String detail = studentName + "," + teacherName + "," + dateStr + "," +timeSlot + "," + place;
+            MailUtil.sendEmail(email, detail, 2);
             response.sendRedirect("manageAppointment.jsp");
         }
     }
