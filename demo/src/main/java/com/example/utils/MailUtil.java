@@ -9,6 +9,7 @@ import java.util.Properties;
 
 //type = 0 学生注册成功
 //type = 1 预约成功
+//type = 2 预约删除通知
 public class MailUtil {
 	public static Session sendEmail(String email, String detail, int type) {
 		// 1.创建连接对象javax.mail.Session

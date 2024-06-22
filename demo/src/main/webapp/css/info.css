@@ -1,3 +1,11 @@
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-left: 220px; /* 侧边栏宽度为200px，加上额外的20px间距 */
+}
+
 .container {
     display: flex;
     justify-content: space-between;

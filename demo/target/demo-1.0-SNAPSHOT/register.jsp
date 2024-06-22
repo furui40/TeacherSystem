@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/login1.css">
     <script>
         function toggleStudentFields() {
             var studentRadio = document.getElementById('student');

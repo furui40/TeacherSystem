@@ -3,7 +3,6 @@ body {
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    margin-left: 220px; /* 侧边栏宽度为200px，加上额外的20px间距 */
 }
 
 table {

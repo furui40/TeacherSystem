@@ -8,6 +8,7 @@
 <head>
   <title>修改展示信息</title>
   <link rel="stylesheet" type="text/css" href="css/login.css">
+  <link rel="stylesheet" type="text/css" href="css/sidebar.css">
 </head>
 <body>
 <h1>修改信息</h1>
@@ -55,6 +56,17 @@
       </tr>
   </form>
 </table>
+<%int tid = (int) session.getAttribute("tid");%>
+<div class="sidebar">
+  <h2>欢迎访问</h2>
+  <h2>教师信息管理系统</h2>
+  <button class="sideButton" onclick="window.location.href = 'homepaget.jsp'">返回主页</button>
+  <button class="sideButton"  onclick="window.location.href = 'modifyTeacher.jsp?tid=<%=tid%>'">编辑教师基本信息</button>
+  <button class="sideButton"  onclick="window.location.href = 'selectResearch.jsp?uid=<%=tid%>'">修改个人成果展示</button>
+  <button class="sideButton"  onclick="window.location.href = 'teacherSetSchedule.jsp?uid=<%=tid%>'">设置个人日程</button>
+  <button class="sideButton"  onclick="window.location.href = 'teacherAppointmentShow.jsp?uid=<%=tid%>'">查看预约情况</button>
+  <button class="sideButton"  onclick="window.location.href = 'login.jsp'">退出登录</button>
+</div>
 <div><button class="center-button" onclick="window.location.href = 'homepaget.jsp'">返回主页</button></div>
 </body>
 </html>

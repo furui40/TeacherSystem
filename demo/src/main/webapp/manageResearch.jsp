@@ -11,6 +11,7 @@
 <head>
     <title>成果管理</title>
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css">
 </head>
 <body>
 <h1>成果管理</h1>
@@ -99,6 +100,15 @@
     <% } %>
 </table>
 <% } %>
+<div class="sidebar">
+    <h2>欢迎访问</h2>
+    <h2>教师信息管理系统</h2>
+    <button class="sideButton"  onclick="window.location.href = 'homepageadmin.jsp'">返回主页</button>
+    <button class="sideButton"  onclick="window.location.href = 'manageTeacher.jsp'">教师信息管理</button>
+    <button class="sideButton"  onclick="window.location.href = 'manageResearch.jsp'">教师成果管理</button>
+    <button class="sideButton"  onclick="window.location.href = 'manageAppointment.jsp'">预约管理</button>
+    <button class="sideButton" onclick="window.location.href = 'login.jsp'">退出登录</button>
+</div>
 <div><button class="center-button" onclick="window.location.href = 'addNewResearch.jsp'">新增研究成果</button></div>
 <div><button class="center-button" onclick="window.location.href = 'homepageadmin.jsp'">返回主页</button></div>
 </body>

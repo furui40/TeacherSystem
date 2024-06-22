@@ -10,6 +10,7 @@
 <head>
     <title>教师详细页</title>
     <link rel="stylesheet" type="text/css" href="css/info.css">
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css">
 </head>
 <body>
 <h1>教师详细页</h1>
@@ -57,6 +58,17 @@
         </div>
         <% } %>
     </div>
+</div>
+<%int studentId = (int) session.getAttribute("sid");%>
+<div class="sidebar">
+    <h2>欢迎访问</h2>
+    <h2>教师信息管理系统</h2>
+    <button class="sideButton" onclick="window.location.href = 'homepages.jsp'">返回主页</button>
+    <button class="sideButton" onclick="window.location.href = 'listTeacher.jsp'">教师列表</button>
+    <button class="sideButton"  onclick="window.location.href = 'searchTeacher.jsp'">检索教师</button>
+    <button class="sideButton"  onclick="window.location.href = 'recommendTeacher.jsp'">推荐教师</button>
+    <button class="sideButton" onclick="window.location.href = 'studentShowAppointment.jsp?studentId=<%=studentId%>';">查看预约记录</button>
+    <button class="sideButton"  onclick="window.location.href = 'login.jsp'">退出登录</button>
 </div>
 <button class="center-button" onclick="window.location.href = 'studentAppointment.jsp?TeacherId=<%= teacher.getTeacherID() %>'">预约查询</button>
 <div><button class="center-button" onclick="window.location.href = 'homepages.jsp'">返回主页</button></div>

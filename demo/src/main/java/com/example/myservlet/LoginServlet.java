@@ -1,7 +1,12 @@
 package com.example.myservlet;
 
 import com.example.dao.UsersDao;
+import com.example.dao.impl.ScheduleDaoImpl;
+import com.example.dao.impl.StudentDaoImpl;
+import com.example.dao.impl.TeachersDaoImpl;
 import com.example.dao.impl.UsersDaoImpl;
+import com.example.entity.Student;
+import com.example.entity.Teacher;
 import com.example.entity.User;
 import com.example.entity.UserType;
 
@@ -47,8 +52,14 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("userType", user.getUserType());
 
             if (user.getUserType() == UserType.Teacher) {
+                TeachersDaoImpl teachersDao = new TeachersDaoImpl();
+                Teacher teacher = teachersDao.getTeacherByUserId(Integer.parseInt(userId));
+                session.setAttribute("tid", teacher.getTeacherID());
                 response.sendRedirect("homepaget.jsp");
             } else if (user.getUserType() == UserType.Student) {
+                StudentDaoImpl studentDao = new StudentDaoImpl();
+                int studentId = studentDao.getStudentIdByUserId(Integer.parseInt(userId));
+                session.setAttribute("sid",studentId);
                 response.sendRedirect("homepages.jsp");
             } else if(user.getUserType() == UserType.Admin){
                 response.sendRedirect("homepageadmin.jsp");
