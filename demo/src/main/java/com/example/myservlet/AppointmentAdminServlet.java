@@ -90,6 +90,13 @@ public class AppointmentAdminServlet extends HttpServlet {
             request.getRequestDispatcher("manageAppointment.jsp").forward(request, response);
         }else if("deletey".equals(action)){
             int appointId = Integer.parseInt(request.getParameter("id"));
+            Appointment appointment = appointmentDao.getAppointmentById(appointId);
+            Date date = appointment.getDate();
+            String time = appointment.getAppointmentTime();
+            int teacherId = appointment.getTeacherID();
+            ScheduleDaoImpl scheduleDao = new ScheduleDaoImpl();
+            Schedule schedule = new Schedule(teacherId,date,time);
+            scheduleDao.saveSchedule(schedule);
             appointmentDao.deleteAppointment(appointId);
             response.sendRedirect("manageAppointment.jsp");
         }
