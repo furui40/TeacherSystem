@@ -64,7 +64,7 @@
             url.contains("addNewAppointment.jsp") ||
             url.contains("addNewResearch.jsp") ||
             url.contains("addNewTeacher.jsp") ||
-            url.contains("modifyTeacher.jsp?admintid") ||
+            url.contains("modifyTeacher.jsp") ||
             url.contains("manageAppointment.jsp") ||
             url.contains("manageResearch.jsp") ||
             url.contains("manageTeacher.jsp") ||

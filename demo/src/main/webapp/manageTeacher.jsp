@@ -8,9 +8,26 @@
 <head>
     <title>教师信息管理</title>
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function updateTeacherInfo() {
+            $.ajax({
+                url: 'dataFetch',
+                type: 'POST',
+                success: function(response) {
+                    alert('教师信息已更新');
+                    location.reload();
+                },
+                error: function() {
+                    alert('更新失败');
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <h1>教师信息管理</h1>
+<div><button class="center-button" onclick="updateTeacherInfo()">更新官网教师信息</button></div>
 <div class="form-wrapper">
     <form class="search-form" action="TeacherSearchServlet" method="GET">
         <label class="form-label" for="keyword">请输入关键词：</label>
@@ -85,4 +102,3 @@
 <div><button class="center-button" onclick="window.location.href = 'homepageadmin.jsp'">返回主页</button></div>
 </body>
 </html>
-

@@ -31,7 +31,30 @@ public class UsersDaoImpl implements UsersDao {
         return userID; // 返回插入的UserID，如果插入失败则返回-1
     }
 
+    @Override
+    public int createUser(User user) {
+        String checkSql = "SELECT COUNT(*) FROM Users WHERE Username = ?";
+        String insertSql = "INSERT INTO Users (UserID, Username, Password, UserType) VALUES (?, ?, ?, ?)";
+        int result = 0;
 
+        try {
+            // 检查用户名是否已存在
+            ResultSet rs = DBUtil.executeQuery(checkSql, user.getUsername());
+            if (rs.next() && rs.getInt(1) > 0) {
+                System.out.println("用户名已存在: " + user.getUsername());
+                return -1; // 用户名已存在
+            }
+
+            // 插入用户
+            result = DBUtil.executeUpdate(insertSql, user.getUserID(), user.getUsername(), user.getPassword(), user.getUserType().toString());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close();
+        }
+
+        return result;
+    }
 
 
     @Override
