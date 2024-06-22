@@ -14,6 +14,7 @@
 <h1>教师信息管理</h1>
 <div class="form-wrapper">
     <form class="search-form" action="TeacherSearchServlet" method="GET">
+        <input type="hidden" name="action" value="adminSearch">
         <label class="form-label" for="keyword">请输入关键词：</label>
         <input class="form-input" type="text" id="keyword" name="keyword" required>
         <input class="form-submit" type="submit" value="查找">
