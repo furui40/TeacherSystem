@@ -12,6 +12,9 @@
 <%@ page import="com.example.entity.Teacher" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.example.dao.AppointmentDao" %>
+<%@ page import="com.example.dao.impl.AppointmentDaoImpl" %>
+<%@ page import="com.example.entity.Appointment" %>
 <%@ include file="checklogin.jsp"%>
 <link rel="stylesheet" type="text/css" href="css/set.css">
 
@@ -61,6 +64,9 @@
     ScheduleDao scheduleDao = new ScheduleDaoImpl();
     List<Schedule> schedules = scheduleDao.getScheduleByTeacherId(teacherId);
 
+    AppointmentDao appointmentDao = new AppointmentDaoImpl();
+    List<Appointment> appointments = appointmentDao.getAppointmentsByTeacherId(teacherId);
+
     // 设置最大页数为4
     int maxPages = 4;
 %>
@@ -95,13 +101,22 @@
             <%-- Loop through each date for the current time slot --%>
             <% for (String date : weekDates) {
                 LocalDate currentDate2 = LocalDate.parse(date, dateFormatter);
-                boolean isAvailable = true;
+                int isAvailable = 1;
                 for (Schedule schedule : schedules) {
                     Date date2 = schedule.getDate();
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                     String formattedDate = formatter.format(date2);
                     if (formattedDate.equals(currentDate2.format(dateFormatter)) && schedule.getTimeSlot().equals(timeSlots[i])) {
-                        isAvailable = false;
+                        isAvailable = 0;
+                        break;
+                    }
+                }
+                for (Appointment appointment : appointments) {
+                    Date date3 = appointment.getDate();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    String formattedDate = formatter.format(date3);
+                    if (formattedDate.equals(currentDate2.format(dateFormatter)) && appointment.getAppointmentTime().equals(timeSlots[i])) {
+                        isAvailable = 2;
                         break;
                     }
                 }
@@ -112,7 +127,16 @@
 
 
             %>
-            <td><%= isAvailable ? "可被预约" : "不可被预约" %><br><input type="checkbox" name="<%= checkBoxName %>" value="<%= checkBoxValue %>" <%= isChecked %>></td>
+            <td>
+                <% if (isAvailable == 2) { %>
+                已被预约
+                <% } else { %>
+                <%= isAvailable == 1 ? "可被预约" : "不可被预约" %>
+                <br>
+                <input type="checkbox" name="<%= checkBoxName %>" value="<%= checkBoxValue %>" <%= isChecked %>>
+                <% } %>
+            </td>
+
             <% } %>
         </tr>
         <% } %>
@@ -135,3 +159,5 @@
 
 </body>
 </html>
+
+
