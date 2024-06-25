@@ -4,8 +4,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+    line-height: 1.6;
+    margin-left: 220px; /* 侧边栏宽度为200px，加上额外的20px间距 */
 }
 
 h1 {
@@ -15,6 +15,9 @@ h1 {
     color: #333;
 }
 
+h3{
+    text-align: center;
+}
 /* Table styling */
 table {
     width: 80%;

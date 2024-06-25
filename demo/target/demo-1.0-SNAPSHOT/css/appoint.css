@@ -3,7 +3,6 @@
 /* Body and general styling */
 body {
     font-family: 'Times New Roman', Times, serif;
-    background-color: rgba(239, 200, 135, 0.1);
     margin: 0;
     padding: 0;
 }
@@ -15,13 +14,16 @@ h1 {
     color: #333;
 }
 
+h3{
+    text-align: center;
+}
+
 /* Table styling */
 table {
     width: 80%;
     margin: 20px auto;
     border-collapse: collapse;
-    border: 2px solid #999;
-    background-color: #d9b476;
+    background-color: #4fc8d7;
 }
 
 table th {
@@ -54,8 +56,8 @@ table td {
 }
 
 .center-button:hover {
-    background-color: #443a27;
-    color: #f1deba;
+    background-color: #3e8ecb;
+    color: #fff;
 }
 
 /* Dropdown (select) styling */
@@ -84,7 +86,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #dedc52;
+    background-color: #3498db;
 }
 
 /* Pagination links */
@@ -92,7 +94,7 @@ a {
     display: inline-block;
     padding: 10px 20px;
     margin: 10px;
-    background-color: #e2d166;
+    background-color: #3498db;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -100,18 +102,6 @@ a {
 }
 
 a:hover {
-    background-color: #c0c280;
+    background-color: #9eaae3;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    table {
-        width: 90%;
-    }
-}
-
-@media (max-width: 576px) {
-    table {
-        width: 100%;
-    }
-}

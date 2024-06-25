@@ -4,6 +4,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #7ac2d0;
     padding: 20px;
+    line-height: 1.6;
+    margin-left: 220px; /* 侧边栏宽度为200px，加上额外的20px间距 */
 }
 
 h1 {
@@ -12,9 +14,9 @@ h1 {
 }
 
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: 0 auto;
     background-color: #4fc8d7;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

@@ -1,0 +1,15 @@
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (1, 3, '2024-06-19', 'afternoon');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (7, 1, '2024-06-21', 'afternoon');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (8, 1, '2024-06-20', 'morning');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (9, 1, '2024-06-20', 'afternoon');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (10, 1, '2024-06-25', 'morning');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (11, 1, '2024-06-25', 'afternoon');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (12, 1, '2024-06-26', 'afternoon');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (13, 1, '2024-06-27', 'afternoon');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (14, 1, '2024-06-28', 'evening');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (19, 650, '2024-06-28', 'afternoon');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (20, 650, '2024-06-29', 'evening');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (21, 650, '2024-06-30', 'morning');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (22, 650, '2024-06-30', 'afternoon');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (23, 650, '2024-06-30', 'evening');
+INSERT INTO teacher.schedule (ScheduleID, TeacherID, Date, TimeSlot) VALUES (32, 650, '2024-06-25', 'afternoon');

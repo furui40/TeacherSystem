@@ -7,7 +7,7 @@
 //  Cookie[] cookies = request.getCookies(); // 获取所有的Cookie
 //  String username = null;
   int userId = -1; // 初始化为-1，表示未找到有效的用户ID
-
+  String name = null;
 // 遍历Cookie数组，查找名为 "username" 和 "id" 的Cookie
   if (cookies != null) {
     for (Cookie cookie : cookies) {
@@ -25,6 +25,7 @@
     // 使用StudentDao查找Student对象
     StudentDao studentDao = new StudentDaoImpl(); // 假设这里是你的StudentDao实现类
     studentId = studentDao.getStudentIdByUserId(userId);
+    name = studentDao.getStudentById(studentId).getName();
 
   }
 // 现在你可以继续使用 studentId 进行你的后续逻辑，比如展示学生的预约记录等
@@ -33,7 +34,7 @@
   String identity;
 
   if (username != null) {
-    welcomeMessage = "欢迎访问教师信息管理系统，" + username + "同学";
+    welcomeMessage = "欢迎访问教师信息管理系统，" + name + "同学";
     identity = "您的身份是：学生";
   } else {
     welcomeMessage = "欢迎访问教师信息管理系统";

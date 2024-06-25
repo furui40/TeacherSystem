@@ -1,0 +1,10 @@
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (2, 1, 1, '2024-06-17', 'office', 'morning');
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (4, 1, 1, '2024-06-22', 'library', 'afternoon');
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (5, 2, 2, '2024-06-17', 'classroom', 'afternoon');
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (16, 7, 1, '2024-06-30', 'library', 'evening');
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (17, 7, 650, '2024-06-25', 'office', 'evening');
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (18, 7, 650, '2024-06-26', 'classroom', 'morning');
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (19, 7, 650, '2024-06-27', 'library', 'morning');
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (22, 1, 1035, '2024-06-28', 'classroom', 'evening');
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (23, 1, 1035, '2024-06-29', 'library', 'morning');
+INSERT INTO teacher.appointments (AppointmentID, StudentID, TeacherID, Date, Place, AppointmentTime) VALUES (24, 8, 650, '2024-06-25', 'library', 'morning');

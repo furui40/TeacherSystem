@@ -78,6 +78,6 @@ public class SetAvailabilityServlet extends HttpServlet {
         }
 
         // 返回到设置页面或其他逻辑
-        response.sendRedirect("homepaget.jsp"); // 假设设置页面为 setAvailability.jsp
+        response.sendRedirect("teacherSetSchedule.jsp?uid="+teacherId);
     }
 }
