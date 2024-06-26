@@ -1,10 +1,10 @@
 /* styles.css */
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
+    line-height: 1.6;
+    margin-left: 220px; /* 侧边栏宽度为200px，加上额外的20px间距 */
 }
 
 h1 {
@@ -37,50 +37,39 @@ table td {
     border: 1px solid #3498db;
 }
 
-button[type="submit"],
-button {
-    display: block;
-    width: 150px;
-    margin: 20px auto;
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
-    background-color: #3498db;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
+/*button[type="submit"],*/
+/*button {*/
+/*    display: block;*/
+/*    width: 150px;*/
+/*    margin: 20px auto;*/
+/*    padding: 10px;*/
+/*    text-align: center;*/
+/*    font-size: 18px;*/
+/*    background-color: #3498db;*/
+/*    border: none;*/
+/*    color: white;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s, color 0.3s;*/
+/*}*/
 
-button[type="submit"]:hover,
-button:hover {
-    background-color: #2980b9;
-}
+/*button[type="submit"]:hover,*/
+/*button:hover {*/
+/*    background-color: #2980b9;*/
+/*}*/
 
-a {
-    color: #3498db;
-    text-decoration: none;
-    padding: 5px 10px;
-    transition: background-color 0.3s, color 0.3s;
-}
+/*a {*/
+/*    color: #3498db;*/
+/*    text-decoration: none;*/
+/*    padding: 5px 10px;*/
+/*    transition: background-color 0.3s, color 0.3s;*/
+/*}*/
 
-a:hover {
-    background-color: #2980b9;
-    color: white;
-}
+/*a:hover {*/
+/*    background-color: #2980b9;*/
+/*    color: white;*/
+/*}*/
 
 .container {
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    table {
-        width: 90%;
-    }
-}
-
-@media (max-width: 576px) {
-    table {
-        width: 100%;
-    }
-}

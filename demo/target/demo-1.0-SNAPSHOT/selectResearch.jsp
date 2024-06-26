@@ -1,6 +1,8 @@
 <%@ page import="com.example.entity.Research" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.dao.impl.ResearchDaoImpl" %>
+<%@ page import="com.example.dao.impl.UsersDaoImpl" %>
+<%@ page import="com.example.dao.impl.TeachersDaoImpl" %>
 <%@ include file="checklogin.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -23,24 +25,23 @@
     </tr>
     <%-- 从数据库获取项目数据，并遍历展示 --%>
     <%
-        // 获取完整的查询字符串
-        String queryString = request.getQueryString();
-        String uid = null;
-        if (queryString != null) {
-            String parameterName = "uid=";
-            int index = queryString.indexOf(parameterName);
+        String id = null;
 
-            if (index != -1) {
-                index += parameterName.length();
-                int endIndex = queryString.indexOf("&", index);
-                uid = (endIndex != -1) ? queryString.substring(index, endIndex) : queryString.substring(index);
+        // 遍历Cookie数组，查找名为 "id" 的Cookie
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("id")) {
+                    id = cookie.getValue();
+                    break;
+                }
             }
         }
-
-
+        int uid = Integer.parseInt(id);
+        TeachersDaoImpl teachersDao = new TeachersDaoImpl();
+        int uuid = teachersDao.getTeacherByUserId(uid).getTeacherID();
     %>
     <%
-        int uuid = Integer.parseInt(uid);
+
         ResearchDaoImpl ResearchDao = new ResearchDaoImpl();
         // 假设从数据库获取到的项目数据存储在一个List中，每个项目是一个Research对象
         List<Research> researchList = ResearchDao.getResearchByTeacherId(uuid); // 从数据库获取所有项目数据

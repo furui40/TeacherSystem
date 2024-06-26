@@ -16,8 +16,6 @@
 <%@ page import="com.example.dao.impl.AppointmentDaoImpl" %>
 <%@ page import="com.example.entity.Appointment" %>
 <%@ include file="checklogin.jsp"%>
-<link rel="stylesheet" type="text/css" href="css/set.css">
-
 
 <%
     // 获取传入的TeacherId参数
@@ -74,13 +72,15 @@
 <html>
 <head>
     <title>设置教师空闲时间表</title>
+    <link rel="stylesheet" type="text/css" href="css/set.css">
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css">
 </head>
 <body>
 <h1>设置教师空闲时间表</h1>
 
 <!-- 显示当前页的日期范围 -->
 <h3><%= pageStart.format(dateFormatter) %> 至 <%= pageEnd.format(dateFormatter) %></h3>
-
+<h3>注意：单元格内显示的是当前时间点是否接受预约，选中复选框并提交后，会变为相反的状态</h3>
 <form method="post" action="SetAvailabilityServlet">
     <input type="hidden" name="teacherId" value="<%= teacherId %>">
     <input type="hidden" name="pageStart" value="<%= pageStart.format(dateFormatter) %>">
@@ -131,7 +131,11 @@
                 <% if (isAvailable == 2) { %>
                 已被预约
                 <% } else { %>
+<<<<<<< HEAD
                 <%= isAvailable == 1 ? "可被预约" : "不可被预约" %>
+=======
+                <%= isAvailable == 1 ? "不接受预约" : "接受预约" %>
+>>>>>>> e59aff5479148ceda020fbdc232d26e48e232e8a
                 <br>
                 <input type="checkbox" name="<%= checkBoxName %>" value="<%= checkBoxValue %>" <%= isChecked %>>
                 <% } %>
@@ -154,8 +158,18 @@
     <a href="?uid=<%= teacherId %>&page=<%= currentPage + 1 %>">下一页 &raquo;</a>
     <% } %>
 </div>
-
-<button onclick="window.location.href = 'homepages.jsp'">返回首页</button>
+<%int tid = (int) session.getAttribute("tid");%>
+<div class="sidebar">
+    <h2>欢迎访问</h2>
+    <h2>教师信息管理系统</h2>
+    <button class="sideButton" onclick="window.location.href = 'homepaget.jsp'">返回主页</button>
+    <button class="sideButton" onclick="window.location.href = 'modifyTeacher.jsp?tid=<%=tid%>'">编辑教师基本信息</button>
+    <button class="sideButton" onclick="window.location.href = 'selectResearch.jsp?uid=<%=tid%>'">修改个人成果展示</button>
+    <button class="sideButton" onclick="window.location.href = 'teacherSetSchedule.jsp?uid=<%=tid%>'">设置个人日程</button>
+    <button class="sideButton" onclick="window.location.href = 'teacherAppointmentShow.jsp?uid=<%=tid%>'">查看预约情况</button>
+    <button class="sideButton" onclick="window.location.href = 'login.jsp'">退出登录</button>
+</div>
+<button onclick="window.location.href = 'homepaget.jsp'">返回首页</button>
 
 </body>
 </html>

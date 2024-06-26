@@ -12,6 +12,7 @@
 <head>
     <title>学生预约记录</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css">
 </head>
 <body>
 <h1>学生预约记录</h1>
@@ -86,6 +87,15 @@
     </tr>
     <% } %>
 </table>
-<div><button class="center-button" onclick="window.location.href = 'homepages.jsp'">返回主页</button></div>
+<div class="sidebar">
+    <h2>欢迎访问</h2>
+    <h2>教师信息管理系统</h2>
+    <button class="sideButton" onclick="window.location.href = 'homepages.jsp'">返回主页</button>
+    <button class="sideButton" onclick="window.location.href = 'listTeacher.jsp'">教师列表</button>
+    <button class="sideButton"  onclick="window.location.href = 'searchTeacher.jsp'">检索教师</button>
+    <button class="sideButton"  onclick="window.location.href = 'recommendTeacher.jsp'">推荐教师</button>
+    <button class="sideButton" onclick="window.location.href = 'studentShowAppointment.jsp?studentId=<%=studentId%>';">查看预约记录</button>
+    <button class="sideButton"  onclick="window.location.href = 'login.jsp'">退出登录</button>
+</div>
 </body>
 </html>

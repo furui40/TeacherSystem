@@ -1,0 +1,5 @@
+cmd中连结数据库
+手动创建teacher数据库
+use teacher;
+将allinone.sql的全部内容复制到cmd中
+自动创建数据表并添加数据
