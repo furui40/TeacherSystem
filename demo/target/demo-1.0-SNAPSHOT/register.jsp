@@ -40,6 +40,17 @@
                     alert("请输入有效的邮箱地址。");
                     return false;
                 }
+
+                // 检查邮箱是否已被注册
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "CheckEmailServlet", false); // 使用同步请求以确保在继续前检查完毕
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send("email=" + encodeURIComponent(email));
+
+                if (xhr.responseText === "exists") {
+                    alert("邮箱已被注册。");
+                    return false;
+                }
             }
 
             return true;

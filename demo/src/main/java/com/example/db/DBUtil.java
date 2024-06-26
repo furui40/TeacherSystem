@@ -3,7 +3,7 @@ package com.example.db;
 import java.sql.*;
 
 public class DBUtil {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/teacher";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/db02";
     private static final String USER = "root";
     private static final String PASSWORD = "123456";
 
@@ -29,6 +29,23 @@ public class DBUtil {
 
     public static void close() {
         close(connection, statement, resultSet);
+    }
+
+    public static int querySingleValue(String query, String param) {
+        int result = 0;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, param);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                result = rs.getInt(1);
+            }
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public static void close(Connection con, Statement stmt, ResultSet rs) {

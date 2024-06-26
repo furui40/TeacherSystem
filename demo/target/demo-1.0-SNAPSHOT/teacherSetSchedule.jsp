@@ -131,11 +131,7 @@
                 <% if (isAvailable == 2) { %>
                 已被预约
                 <% } else { %>
-<<<<<<< HEAD
-                <%= isAvailable == 1 ? "可被预约" : "不可被预约" %>
-=======
                 <%= isAvailable == 1 ? "不接受预约" : "接受预约" %>
->>>>>>> e59aff5479148ceda020fbdc232d26e48e232e8a
                 <br>
                 <input type="checkbox" name="<%= checkBoxName %>" value="<%= checkBoxValue %>" <%= isChecked %>>
                 <% } %>
@@ -173,5 +169,3 @@
 
 </body>
 </html>
-
-

@@ -13,4 +13,6 @@ public interface TeachersDao {
     List<Teacher> getTeachersByMajor(String major); // New method declaration
     void updateTeacher(Teacher teacher);
     void deleteTeacher(int id);
+
+
 }

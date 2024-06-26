@@ -35,7 +35,6 @@
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("id")) {
                     userId = Integer.valueOf(cookie.getValue());
-                    System.out.println("userId = "+ userId);
                 }
             }
             TeachersDaoImpl teachersDao = new TeachersDaoImpl();
@@ -63,11 +62,41 @@
     <title>教师信息编辑</title>
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!name || !email) {
+                alert("所有字段都是必填的。");
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert("请输入有效的邮箱地址。");
+                return false;
+            }
+
+            // 检查邮箱是否已被注册
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "CheckEmailServlet", false); // 使用同步请求以确保在继续前检查完毕
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("email=" + encodeURIComponent(email));
+
+            if (xhr.responseText === "exists") {
+                alert("邮箱已被注册。");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </head>
 <body>
 <h1>教师信息编辑</h1>
 <table>
-    <form name="modifyForm" id="modify-form" action="TeacherServlet" method="POST">
+    <form name="modifyForm" id="modify-form" action="TeacherServlet" method="POST" onsubmit="return validateForm()">
         <input type="hidden" name="action" value="<%=actionvalue%>">
         <input type="hidden" name="id" value="<%=ttid%>">
         <input type="hidden" name="uid" value="<%=userId%>">
