@@ -1,9 +1,12 @@
 package com.example.myservlet;
 
+import com.example.dao.TeachersDao;
 import com.example.dao.UsersDao;
 import com.example.dao.StudentDao;
+import com.example.dao.impl.TeachersDaoImpl;
 import com.example.dao.impl.UsersDaoImpl;
 import com.example.dao.impl.StudentDaoImpl;
+import com.example.entity.Teacher;
 import com.example.entity.User;
 import com.example.entity.Student;
 import com.example.entity.UserType;
@@ -22,10 +25,13 @@ public class UserServlet extends HttpServlet {
     private UsersDao usersDao;
     private StudentDao studentDao;
 
+    private TeachersDao teachersDao;
+
     @Override
     public void init() throws ServletException {
         usersDao = new UsersDaoImpl();
         studentDao = new StudentDaoImpl();
+        teachersDao = new TeachersDaoImpl();
     }
 
     @Override
@@ -72,6 +78,16 @@ public class UserServlet extends HttpServlet {
 
             String detail = username + "," + password + "," + name;
             MailUtil.sendEmail(email, detail, 0);
+        }
+        if (userType == UserType.Teacher) {
+            Teacher teacher = new Teacher();
+            teacher.setUserID(getUserID);
+            teacher.setEmail("example@123");
+            teacher.setBio("请输入简介内容");
+            teacher.setProfession("计算机科学与技术");
+            teacher.setName("请去设置个人信息，");
+            teachersDao.saveTeacher(teacher);
+
         }
         // 注册成功，重定向到登录页面
         response.sendRedirect("login.jsp");
