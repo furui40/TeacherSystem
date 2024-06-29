@@ -15,7 +15,7 @@ public class MailUtil {
 		// 1.创建连接对象javax.mail.Session
 		// 2.创建邮件对象 javax.mail.Message
 		// 3.发送一封激活邮件
-		String from = "729919744@qq.com";// 发件人电子邮箱
+		String from = "3338329165@qq.com";// 发件人电子邮箱
 		String host = "smtp.qq.com"; // 指定发送邮件的主机smtp.qq.com(QQ)|smtp.163.com(网易)
 		String code = "aumftytpsgdpcgjd"; // 发件人邮箱账号、授权码
 

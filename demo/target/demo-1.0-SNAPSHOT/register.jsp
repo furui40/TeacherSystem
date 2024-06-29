@@ -27,6 +27,17 @@
                 return false;
             }
 
+            // 检查用户名是否已被注册
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "CheckEmailServlet", false); // 使用同步请求以确保在继续前检查完毕
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("username=" + encodeURIComponent(username));
+
+            if (xhr.responseText === "usernameExists") {
+                alert("用户名已被注册。");
+                return false;
+            }
+
             if (studentRadio) {
                 var name = document.getElementById('name').value;
                 var email = document.getElementById('email').value;
@@ -42,12 +53,11 @@
                 }
 
                 // 检查邮箱是否已被注册
-                var xhr = new XMLHttpRequest();
                 xhr.open("POST", "CheckEmailServlet", false); // 使用同步请求以确保在继续前检查完毕
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhr.send("email=" + encodeURIComponent(email));
 
-                if (xhr.responseText === "exists") {
+                if (xhr.responseText === "emailExists") {
                     alert("邮箱已被注册。");
                     return false;
                 }

@@ -41,7 +41,7 @@ CREATE TABLE Appointments (
     Date DATE,
     Place VARCHAR(255) NOT NULL,
     AppointmentTime ENUM('morning', 'afternoon', 'evening') NOT NULL,
-    FOREIGN KEY (StudentID) REFERENCES Users(UserID),
+    FOREIGN KEY (StudentID) REFERENCES students(StudentID),
     FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
 );
 

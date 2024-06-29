@@ -81,9 +81,19 @@ public class AppointmentAdminServlet extends HttpServlet {
                 Appointment appointment = new Appointment(studentId, teacherId, date, place, timeSlot);
                 ScheduleDao scheduleDao = new ScheduleDaoImpl();
                 AppointmentDao appointmentDao = new AppointmentDaoImpl();
-                if(scheduleDao.exists(teacherId,date,timeSlot)){
+                List<Appointment> appointments = appointmentDao.getAppointmentsByStudentId(studentId);
+                Boolean flag = false;
+                for (Appointment appointment0 : appointments) {
+                    if (appointment0.getAppointmentTime().equals(timeSlot) &&
+                            appointment0.getDate().equals(date) ) {
+                        flag = true;
+                    }
+                }
+                if(scheduleDao.exists(teacherId,date,timeSlot) && !flag){
                     scheduleDao.deleteSchedule(teacherId, date, timeSlot);
                     appointmentDao.saveAppointment(appointment);
+                }else{
+                    request.setAttribute("msg","ÃÌº” ß∞‹");
                 }
             }else{
                 request.setAttribute("msg","ÃÌº” ß∞‹");

@@ -38,6 +38,12 @@
     </form>
 </div>
 
+<% if (request.getAttribute("msg") != null) { %>
+<script>
+    alert("<%= request.getAttribute("msg") %>");
+</script>
+<% } %>
+
 <%-- 搜索结果显示部分 --%>
 <% if (request.getAttribute("teachers") != null) { %>
 <h2>搜索结果：</h2>

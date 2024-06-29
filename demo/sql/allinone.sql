@@ -41,7 +41,7 @@ CREATE TABLE Appointments (
                               Date DATE,
                               Place VARCHAR(255) NOT NULL,
                               AppointmentTime ENUM('morning', 'afternoon', 'evening') NOT NULL,
-                              FOREIGN KEY (StudentID) REFERENCES Users(UserID),
+                              FOREIGN KEY (StudentID) REFERENCES students(StudentID),
                               FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
 );
 
@@ -64,6 +64,7 @@ INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (8, 'lil
 INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (9, 'a2', '123', 'Admin');
 INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (10, 'dianqi@hit.edu.cn', 'dianqi@hit.edu.cn', 'Teacher');
 INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (13, 'tanliguo@hit.edu.cn', 'tanliguo@hit.edu.cn', 'Teacher');
+INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (15, 's3', '123', 'Student');
 INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (18, 'liuchen2016@hit.edu.cn', 'liuchen2016@hit.edu.cn', 'Teacher');
 INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (23, 'judandan.love@163.com', 'judandan.love@163.com', 'Teacher');
 INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (28, 'lcfeng@hit.edu.cn', 'lcfeng@hit.edu.cn', 'Teacher');
@@ -267,6 +268,7 @@ INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (1013, '
 INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (1018, 'panlei@hit.edu.cn', 'panlei@hit.edu.cn', 'Teacher');
 INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (1023, 'zzxiang01@163.com', 'zzxiang01@163.com', 'Teacher');
 INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (1028, 'test', '123', 'Teacher');
+INSERT INTO teacher.users (UserID, Username, Password, UserType) VALUES (1031, 's4', '123', 'Student');
 INSERT INTO teacher.teachers (TeacherID, UserID, Name, Email, Profession, Bio) VALUES (1, 1, '教师1', 'teacher1@example.com', '数学', '教师1的简介');
 INSERT INTO teacher.teachers (TeacherID, UserID, Name, Email, Profession, Bio) VALUES (2, 2, '教师2', '123@example', '数学', '教师2的简介');
 INSERT INTO teacher.teachers (TeacherID, UserID, Name, Email, Profession, Bio) VALUES (3, 5, '教师3', '123@example', '数学', '教师3的简介');

@@ -34,7 +34,7 @@
 
     // 时间段数组，对应的中文名称
     String[] timeSlots = {"morning", "afternoon", "evening"};
-    String[] timeSlotNames = {"早上", "中午", "晚上"};
+    String[] timeSlotNames = {"上午", "下午", "晚上"};
 
     // 获取页面参数，如果没有则默认为第一页
     int currentPage = 1;

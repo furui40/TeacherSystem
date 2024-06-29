@@ -107,24 +107,30 @@ public class TeacherServlet extends HttpServlet {
             User newuser = new User();
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            newuser.setUsername(username);
-            newuser.setPassword(password);
-            newuser.setUserType(UserType.Teacher);
-            usersDao.saveUser(newuser);
-            User user1 = usersDao.getUserByUsername(username);
-            int uid = user1.getUserID();
-            Teacher newteacher = new Teacher();
-            String name = request.getParameter("name");
-            String major = request.getParameter("profession");
-            String email = request.getParameter("email");
-            String bio = request.getParameter("bio");
-            newteacher.setName(name);
-            newteacher.setProfession(major);
-            newteacher.setEmail(email);
-            newteacher.setBio(bio);
-            newteacher.setUserID(uid);
-            teachersDao.saveTeacher(newteacher);
-            response.sendRedirect("manageTeacher.jsp");
+            User olduser = usersDao.getUserByUsername(username);
+            if(olduser == null){
+                newuser.setUsername(username);
+                newuser.setPassword(password);
+                newuser.setUserType(UserType.Teacher);
+                usersDao.saveUser(newuser);
+                User user1 = usersDao.getUserByUsername(username);
+                int uid = user1.getUserID();
+                Teacher newteacher = new Teacher();
+                String name = request.getParameter("name");
+                String major = request.getParameter("profession");
+                String email = request.getParameter("email");
+                String bio = request.getParameter("bio");
+                newteacher.setName(name);
+                newteacher.setProfession(major);
+                newteacher.setEmail(email);
+                newteacher.setBio(bio);
+                newteacher.setUserID(uid);
+                teachersDao.saveTeacher(newteacher);
+                response.sendRedirect("manageTeacher.jsp");
+            }else{
+                request.setAttribute("msg","ÃÌº” ß∞‹");
+                request.getRequestDispatcher("manageTeacher.jsp").forward(request, response);
+            }
         }
     }
 

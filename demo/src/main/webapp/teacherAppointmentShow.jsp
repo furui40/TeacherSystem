@@ -88,7 +88,7 @@
     public String translateAppointmentTime(String appointmentTime) {
         switch (appointmentTime) {
             case "morning":
-                return "早上";
+                return "上午";
             case "afternoon":
                 return "下午";
             case "evening":

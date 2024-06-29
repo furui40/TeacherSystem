@@ -70,7 +70,7 @@
                 // 根据实际需要处理预约时间的翻译
                 switch (appointmentTime) {
                     case "morning":
-                        chineseTime = "早上";
+                        chineseTime = "上午";
                         break;
                     case "afternoon":
                         chineseTime = "下午";
